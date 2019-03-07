@@ -2,20 +2,24 @@
 #include <stdlib.h>
 #include <windows.h>
 #include<time.h>
+
 #define  MAP_WIDTH 15 //地图的宽
 #define  MAP_HEIGHT 15 //地图的高
 #define random(x) (rand()%x)
+
 // 移动方向
 typedef enum
 {
    UP=0, DOWN, LEFT, RIGHT
 }DIRECTION;
+
 // 每一截身体
 typedef struct body{
    struct body *pre;    //前面
    struct body *next;   //后面
    int x,y;           // 位置
 }SnakeBody;
+
 // 地图
 char map[MAP_HEIGHT][MAP_WIDTH];
 // 蛇头 蛇尾
@@ -23,8 +27,10 @@ SnakeBody *head, *tail;
 // 蛇头当前的方向
 DIRECTION dir = DOWN;
 int bGameOver = 0;// 游戏结束标志
+
 void generateFood();
 void resetMap();
+
 // 初始化 蛇出生的位置
 void init()
 {
@@ -50,10 +56,12 @@ void init()
 
    generateFood();
 }
+
 void release()
 {
 
 }
+
 void resetMap()
 {
    int row,col;
@@ -65,6 +73,7 @@ void resetMap()
       }
    }
 }
+
 // 蛇的移动
 void move()
 {
@@ -144,6 +153,7 @@ void move()
       }
    }
 }
+
 // 绘制整个场景
 void draw()
 {
@@ -160,6 +170,7 @@ void draw()
       putchar('\n');
    }
 }
+
 // 处理键盘输入
 void handleInput()
 {
@@ -180,6 +191,7 @@ void handleInput()
       }
    }
 }
+
 // 产生食物
 void generateFood()
 {
@@ -195,6 +207,7 @@ void generateFood()
       }
    }
 }
+
 int main()
 {
    init();
