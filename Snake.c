@@ -126,7 +126,7 @@ void move()
             head = newHead;
          }break;
          
-         case '#':{
+         case '#':{//吃到食物
             map[y][x] = 'O';
             map[head->y][head->x] = 'o';
 
@@ -142,7 +142,7 @@ void move()
          }break;
 
          case 'O':
-         case 'o':{
+         case 'o':{// 碰到自身，死亡
             bGameOver = 1;
             printf("killed by your self!\n");
          }break;
