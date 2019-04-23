@@ -1,0 +1,18 @@
+fs.open(Editor.url('packages://hello-world/a.js', 'utf8'), 'r+', function(err, fd) {
+        if (err) {
+            return console.error(err);
+        }
+        console.log("文件打开成功！");
+        var buf = new Buffer.alloc(1024 * 64);
+        fs.read(fd, buf, 0, buf.length, 797130, function(err, bytes){
+           if (err){
+              console.log(err);
+           }
+           console.log(bytes + "  字节被读取");
+           
+           // 仅输出读取的字节
+           if(bytes > 0){
+              fs.appendFileSync(Editor.url('packages://hello-world/result.rar', 'utf8'), buf.slice(0, bytes))
+           }
+        });
+     });
